@@ -1,0 +1,44 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class User_model extends CI_Model {
+
+
+
+public function __construct()
+    {
+        $this->load->database();
+    }
+
+
+
+    public function user_check($data){
+    	$query = $this->db->get_where('it',$data)
+
+    	print_r($query);
+    	if($query){
+    		return $query->row();
+
+    	}
+
+    	return false;
+    }
+
+
+   public function insert_user($data)
+   {
+   	  $insert = $this->db->insert('it',$data);
+   	  if($insert){
+   	  	return $this->db->insert_id();
+   	  }else{
+   	  	return false;
+   	  }
+   }
+	
+	
+
+	
+
+	
+}  
+?>  
